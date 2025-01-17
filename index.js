@@ -13,6 +13,7 @@ const setTimezone = async () => {
       case "linux":
         const timezone = core.getInput("timezoneLinux");
         await execCommand("sudo", ["timedatectl", "set-timezone", timezone]);
+        await execCommand("sudo", ["rm", "/etc/timezone"]);
         break;
       case "darwin":
         const timezone = core.getInput("timezoneMacos");
